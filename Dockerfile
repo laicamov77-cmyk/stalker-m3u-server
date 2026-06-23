@@ -19,7 +19,7 @@ COPY package*.json ./
 RUN npm install
 
 # Copy SQLite database file (if you want to persist the DB image-to-image, otherwise remove this too)
-#COPY database.sqlite ./ 
+COPY database.sqlite ./ 
 
 # Copy source code
 COPY . .
@@ -29,6 +29,7 @@ RUN npm run build
 
 # Expose port
 EXPOSE 8080
+EXPOSE 3000
 
 # Set environment variables
 ENV NODE_ENV=production
