@@ -18,7 +18,7 @@ IMAGE_NAME="${IMAGE_NAME:-stalker-m3u-server}"
 USE_SUDO=""
 PLATFORM_FLAG="" # Default architecture
 IS_BETA=false
-PORT="3000"
+PORT="8080"
 
 # --- Argument Parsing ---
 for arg in "$@"; do
@@ -41,7 +41,7 @@ done
 
 if [ "$IS_BETA" = true ]; then
   IMAGE_NAME="stalker-m3u-server-beta"
-  PORT="3001"
+  PORT="8081"
   echo "⚠️ Running in BETA mode (Port: $PORT, Container: $IMAGE_NAME)"
 fi
 TAR_NAME="$IMAGE_NAME.tar"
