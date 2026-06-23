@@ -18,7 +18,7 @@ IMAGE_NAME="${IMAGE_NAME:-stalker-m3u-server}"
 USE_SUDO=""
 PLATFORM_FLAG="" # Default architecture
 IS_BETA=false
-PORT="8080"
+PORT="10000"
 
 # --- Argument Parsing ---
 for arg in "$@"; do
@@ -41,7 +41,7 @@ done
 
 if [ "$IS_BETA" = true ]; then
   IMAGE_NAME="stalker-m3u-server-beta"
-  PORT="8081"
+  PORT="10000"
   echo "⚠️ Running in BETA mode (Port: $PORT, Container: $IMAGE_NAME)"
 fi
 TAR_NAME="$IMAGE_NAME.tar"
@@ -129,7 +129,7 @@ function deploy_remote() {
     rm "$TAR_NAME"
 
     echo "🚀 Starting container..."
-    $USE_SUDO docker run -d --restart=always -p $PORT:3000 --name "$IMAGE_NAME" "$IMAGE_NAME"
+    $USE_SUDO docker run -d --restart=always -p $PORT:10000 --name "$IMAGE_NAME" "$IMAGE_NAME"
     
     echo "🧹 Cleaning up old images..."
     $USE_SUDO docker image prune -f
